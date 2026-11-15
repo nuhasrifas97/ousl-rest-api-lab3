@@ -38,7 +38,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn verify sonar:sonar -Dsonar.projectKey=ousl-student-service
+        run: |
+          mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
+          -Dsonar.projectKey=ousl-student-service \
+          -Dsonar.host.url=https://sonarcloud.io
 
       - name: Build Container
         run: docker build -t ousl-student-api:${{ github.sha }} .

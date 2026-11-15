@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ousl-project
+        working-directory: ousl-project/ousl-project
 
     steps:
       - name: Checkout Code

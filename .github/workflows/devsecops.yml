@@ -17,17 +17,17 @@ jobs:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_DB: hungryhub
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: hungry_hub
+          POSTGRES_USER: enterprisedb
+          POSTGRES_PASSWORD: ci_test_password
         ports:
-          - 5432:5432
+          - 5444:5432
         options: >-
-          --health-cmd "pg_isready -U postgres"
+          --health-cmd "pg_isready -U enterprisedb -d hungry_hub"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-
+          
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4

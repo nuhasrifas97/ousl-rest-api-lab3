@@ -53,6 +53,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          DB_URL: jdbc:postgresql://localhost:5444/hungry_hub
+          DB_USERNAME: enterprisedb
+          DB_PASSWORD: ci_test_password
         run: |
           mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
           -Dsonar.projectKey=ousl-student-service \

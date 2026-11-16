@@ -42,7 +42,15 @@ jobs:
           mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
           -Dsonar.projectKey=ousl-student-service \
           -Dsonar.host.url=https://sonarcloud.io
-
+          
+      - name: Show Test Failure Details
+        if: always()
+        run: |
+          echo "===== TEST FAILURE REPORTS ====="
+          find target/surefire-reports -type f
+          echo "===== ERROR DETAILS ====="
+          cat target/surefire-reports/*.txt
+          
       - name: Build Container
         run: docker build -t ousl-student-api:${{ github.sha }} .
 

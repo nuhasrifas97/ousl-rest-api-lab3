@@ -59,6 +59,7 @@ jobs:
         run: |
           mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
           -Dsonar.projectKey=ousl-student-service \
+          -Dsonar.organization=nuhasrifas97 \
           -Dsonar.host.url=https://sonarcloud.io
           
       - name: Show Test Failure Details
